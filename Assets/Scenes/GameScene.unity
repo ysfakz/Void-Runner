@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &147287870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.112
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112438899985470534, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666166581372819493, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589413553254951734, guid: 3e9f222464970e64db120ede544f0493, type: 3}
+      propertyPath: m_Name
+      value: Astrounalt_Orange Variant(Clone)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e9f222464970e64db120ede544f0493, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +468,7 @@ MonoBehaviour:
   - {fileID: 491933946015992766, guid: ddd5b99562e60a642a49210f4cc48760, type: 3}
   - {fileID: 8525246119030809619, guid: 362bd6175b9389147a89815b997c2f25, type: 3}
   spawnInterval: 1
+  maxprefabs: 11
 --- !u!4 &1487630003
 Transform:
   m_ObjectHideFlags: 0
@@ -538,3 +600,4 @@ SceneRoots:
   - {fileID: 1614451903}
   - {fileID: 720803792}
   - {fileID: 1487630003}
+  - {fileID: 147287870}
