@@ -19,6 +19,9 @@ public class GroundMove : MonoBehaviour {
             currentSpeed = walkSpeed;
         }
 
+        float distance = currentSpeed * Time.deltaTime;
+        GameManager.Instance.IncreaseScore(distance);
+
         transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
     }
 

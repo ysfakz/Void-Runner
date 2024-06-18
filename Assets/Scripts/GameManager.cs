@@ -6,9 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set;}
+    private float currentScore;
 
     private void Awake() {
         Instance = this;
+    }
+
+    public void IncreaseScore(float amount) {
+        currentScore += amount;
     }
 
     public bool IsRunning() {
@@ -17,6 +22,10 @@ public class GameManager : MonoBehaviour {
         } else {
             return false;
         }
+    }
+
+    public float GetScore() {
+        return currentScore;
     }
 
 }
