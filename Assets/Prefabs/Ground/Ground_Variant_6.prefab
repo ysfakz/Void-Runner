@@ -147,6 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1408387089168741072}
+  - component: {fileID: 9059031195509156498}
   m_Layer: 0
   m_Name: Ground_Variant_6
   m_TagString: Untagged
@@ -175,6 +176,20 @@ Transform:
   - {fileID: 2474185650857516152}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9059031195509156498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525246119030809619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f878fcda439a8f4dac7a2bb5082ae07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 1
+  runSpeed: 2
 --- !u!1001 &2474185650857641720
 PrefabInstance:
   m_ObjectHideFlags: 0
