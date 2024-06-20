@@ -8,7 +8,6 @@ public class ShooterManager : MonoBehaviour {
     [SerializeField] List<Transform> shooters;
     [SerializeField] private float minSpawnInterval = 2f;
     [SerializeField] private float maxSpawnInterval = 5f;
-    [SerializeField] private float shootForce = 2f;
     private float spawnTimer;
 
     private void Start() {
