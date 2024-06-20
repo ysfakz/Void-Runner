@@ -20,10 +20,17 @@ public class GroundMove : MonoBehaviour {
         }
 
         float distance = currentSpeed * Time.deltaTime;
-        // GameManager.Instance.IncreaseScore(distance);
         GameManager.Instance.IncreaseDistance(distance);
 
         transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
     }
+
+    public void PlayerEnter() {
+        GameManager.Instance.SetFloor(transform);
+    }
+
+    // public void PlayerExit() {
+    //     GameManager.Instance.SetFloor(null);
+    // }
 
 }

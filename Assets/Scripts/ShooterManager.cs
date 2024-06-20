@@ -15,10 +15,13 @@ public class ShooterManager : MonoBehaviour {
     }
 
     private void Update() {
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0f) {
-            ShootRocket();
-            ResetSpawnTimer();
+        Transform currentFloor = GameManager.Instance.GetFloor();
+        if (currentFloor != null && currentFloor == transform) {
+            spawnTimer -= Time.deltaTime;
+            if (spawnTimer < 0f) {
+                ShootRocket();
+                ResetSpawnTimer();
+            }
         }
     }
 

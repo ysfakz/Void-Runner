@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     private float currentDistanceTravelled;
     private float currentMultiplier = 1f;
     private float multiplierTimer;
+    private Transform currentFloor;
 
     private void Awake() {
         Instance = this;
@@ -27,7 +28,6 @@ public class GameManager : MonoBehaviour {
                 EndMultiplier();
             }
         }
-        // Debug.Log(Mathf.FloorToInt(currentScore));
     }
 
     public void IncreaseScore(float amount) {
@@ -63,6 +63,14 @@ public class GameManager : MonoBehaviour {
         } else {
             return false;
         }
+    }
+
+    public void SetFloor(Transform floor) {
+        currentFloor = floor;
+    }
+
+    public Transform GetFloor() {
+        return currentFloor;
     }
 
     public float GetScore() {
