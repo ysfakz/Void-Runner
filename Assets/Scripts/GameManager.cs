@@ -1,27 +1,43 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-
     public static GameManager Instance { get; private set;}
-
     [SerializeField] private float milestoneDistance = 500f;
     [SerializeField] private float multiplier = 2f;
     [SerializeField] private float multiplierDuration = 10f;
-
     private float currentScore;
     private float currentDistanceTravelled;
     private float currentMultiplier = 1f;
     private float multiplierTimer;
     private Transform currentFloor;
+    private enum State {
+        WaitingToStart,
+        GamePlaying,
+        GameOver,
+    }
+    private State currentState;
 
     private void Awake() {
         Instance = this;
+        currentState = State.WaitingToStart;
     }
 
     private void Update() {
+        CheckTimer();
+
+        switch (currentState) {
+            case State.WaitingToStart:
+                break;
+            case State.GamePlaying:
+                break;
+            case State.GameOver:
+                break;
+        }
+    }
+
+    private void CheckTimer() {
         if (multiplierTimer > 0f) {
             multiplierTimer -= Time.deltaTime;
             if (multiplierTimer <= 0f) {
@@ -75,6 +91,18 @@ public class GameManager : MonoBehaviour {
 
     public float GetScore() {
         return currentScore;
+    }
+
+    public bool IsWaitingToStart() {
+        return currentState == State.WaitingToStart;
+    }
+
+    public bool IsGamePlaying() {
+        return currentState == State.GamePlaying;
+    }
+
+    public bool IsGameOver() {
+        return currentState == State.GameOver;
     }
 
 }
