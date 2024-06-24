@@ -8,15 +8,20 @@ public class MainMenuUI : MonoBehaviour {
 
     [SerializeField] private Button playButton;
     [SerializeField] private Button quitButton;
+    [SerializeField] private Transform loadingScreen;
 
     private void Awake() {
         playButton.onClick.AddListener( () => {
+            loadingScreen.gameObject.SetActive(true);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
         quitButton.onClick.AddListener( () => {
             Application.Quit();
-            Debug.Log("Application Quit!");
         }); 
+    }
+
+    private void Start() {
+        loadingScreen.gameObject.SetActive(false);
     }
 
 }
