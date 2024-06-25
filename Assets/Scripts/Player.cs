@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public static Player Instance { get; private set; }
 
     public event EventHandler OnPlayerHit;
     private Animator animator;
 
     private void Awake() {
+        Instance = this;
         animator = GetComponent<Animator>();
     }
 
