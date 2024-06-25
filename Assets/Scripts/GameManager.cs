@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -8,7 +7,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float multiplier = 2f;
     [SerializeField] private float multiplierDuration = 10f;
     [SerializeField] private WaitingToStartUI waitingToStartUI;
-    // [SerializeField] private Player player;
     private float currentScore;
     private float currentDistanceTravelled;
     private float currentMultiplier = 1f;
