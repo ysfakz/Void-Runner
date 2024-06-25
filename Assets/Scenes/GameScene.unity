@@ -795,7 +795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'X' to start playing!
+  m_text: Press anywhere to start playing!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94c88e1a0c3028f448af9c76a3c43d99, type: 2}
   m_sharedMaterial: {fileID: 3317166199260628465, guid: 94c88e1a0c3028f448af9c76a3c43d99, type: 2}
@@ -822,8 +822,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3341,13 +3341,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1472225632}
+  - component: {fileID: 1472225633}
   m_Layer: 5
   m_Name: WaitingToStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1472225632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3369,6 +3370,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1472225633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472225631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3cf44a3d9ca7741a0c10c83b6b18a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1487630001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,6 +4108,7 @@ MonoBehaviour:
   milestoneDistance: 500
   multiplier: 2
   multiplierDuration: 10
+  waitingToStartUI: {fileID: 1472225633}
 --- !u!4 &1732641038
 Transform:
   m_ObjectHideFlags: 0

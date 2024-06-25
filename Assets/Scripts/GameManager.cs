@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float milestoneDistance = 500f;
     [SerializeField] private float multiplier = 2f;
     [SerializeField] private float multiplierDuration = 10f;
+    [SerializeField] private WaitingToStartUI waitingToStartUI;
     private float currentScore;
     private float currentDistanceTravelled;
     private float currentMultiplier = 1f;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update() {
+        AddListeners();
         CheckTimer();
 
         switch (currentState) {
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour {
             case State.GameOver:
                 break;
         }
+
+        Debug.Log(currentState);
     }
 
     private void CheckTimer() {
@@ -73,6 +77,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private void AddListeners() {
+        waitingToStartUI.OnStartPressed += WaitingToStartUI_OnStartPressed;
+    }
+
+    private void WaitingToStartUI_OnStartPressed(object sender, EventArgs e) {
+        currentState = State.GamePlaying;
+    }
     public bool IsRunning() {
         if (Input.GetKey(KeyCode.W)) {
             return true;
