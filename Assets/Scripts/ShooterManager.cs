@@ -15,6 +15,7 @@ public class ShooterManager : MonoBehaviour {
     }
 
     private void Update() {
+        if (!GameManager.Instance.IsGamePlaying()) { return; }
         Transform currentFloor = GameManager.Instance.GetFloor();
         if (currentFloor != null && currentFloor == transform) {
             spawnTimer -= Time.deltaTime;

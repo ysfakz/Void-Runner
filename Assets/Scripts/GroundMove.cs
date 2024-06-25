@@ -13,6 +13,7 @@ public class GroundMove : MonoBehaviour {
     }
 
     private void Update() {
+        if (!GameManager.Instance.IsGamePlaying()) { return; }
         if (GameManager.Instance.IsRunning()) {
             currentSpeed = runSpeed;
         } else {

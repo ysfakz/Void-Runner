@@ -20,6 +20,7 @@ public class GroundSpawner : MonoBehaviour {
 
     private IEnumerator SpawnGround() {
         while (spawnedAmount < maxprefabs) {
+            yield return new WaitUntil(GameManager.Instance.IsGamePlaying);
             yield return new WaitForSeconds(spawnInterval);
 
             int index = Random.Range(0, groundPrefabs.Count);
