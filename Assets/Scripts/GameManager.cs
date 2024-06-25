@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour {
     private float currentDistanceTravelled;
     private float currentMultiplier = 1f;
     private float multiplierTimer;
+    private bool isGamePaused = false;
     private Transform currentFloor;
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnpaused;
     private enum State {
         WaitingToStart,
         GamePlaying,
@@ -28,6 +31,10 @@ public class GameManager : MonoBehaviour {
         AddListeners();
         CheckTimer();
 
+        if (Input.GetKeyDown(KeyCode.Escape) && currentState == State.GamePlaying) {
+            TogglePauseGame();
+        }
+
         switch (currentState) {
             case State.WaitingToStart:
                 ResumeGame();
@@ -38,8 +45,6 @@ public class GameManager : MonoBehaviour {
                 PauseGame();
                 break;
         }
-
-        Debug.Log(currentState);
     }
 
     private void CheckTimer() {
@@ -81,6 +86,17 @@ public class GameManager : MonoBehaviour {
     private void AddListeners() {
         waitingToStartUI.OnStartPressed += WaitingToStartUI_OnStartPressed;
         Player.Instance.OnPlayerHit += Player_OnPlayerHit;
+    }
+
+    public void TogglePauseGame() {
+        isGamePaused = !isGamePaused;
+        if (isGamePaused) {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this, EventArgs.Empty);
+        } else {
+            Time.timeScale = 1f;
+            OnGameUnpaused?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void PauseGame() {
