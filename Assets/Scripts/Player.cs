@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    public event EventHandler OnPlayerHit;
     private Animator animator;
 
     private void Awake() {
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         Rocket rocket = other.gameObject.GetComponent<Rocket>();
         if (rocket != null) {
+            OnPlayerHit?.Invoke(this, EventArgs.Empty);
             rocket.gameObject.SetActive(false);
         }
     }

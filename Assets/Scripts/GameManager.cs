@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float multiplier = 2f;
     [SerializeField] private float multiplierDuration = 10f;
     [SerializeField] private WaitingToStartUI waitingToStartUI;
+    [SerializeField] private Player player;
     private float currentScore;
     private float currentDistanceTravelled;
     private float currentMultiplier = 1f;
@@ -79,11 +80,17 @@ public class GameManager : MonoBehaviour {
 
     private void AddListeners() {
         waitingToStartUI.OnStartPressed += WaitingToStartUI_OnStartPressed;
+        player.OnPlayerHit += Player_OnPlayerHit;
     }
 
     private void WaitingToStartUI_OnStartPressed(object sender, EventArgs e) {
         currentState = State.GamePlaying;
     }
+
+    private void Player_OnPlayerHit(object sender, EventArgs e) {
+        currentState = State.GameOver;
+    }
+
     public bool IsRunning() {
         if (Input.GetKey(KeyCode.W)) {
             return true;

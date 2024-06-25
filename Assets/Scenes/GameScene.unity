@@ -4109,6 +4109,7 @@ MonoBehaviour:
   multiplier: 2
   multiplierDuration: 10
   waitingToStartUI: {fileID: 1472225633}
+  player: {fileID: 1368022552}
 --- !u!4 &1732641038
 Transform:
   m_ObjectHideFlags: 0
