@@ -32,10 +32,12 @@ public class GameManager : MonoBehaviour {
 
         switch (currentState) {
             case State.WaitingToStart:
+                ResumeGame();
                 break;
             case State.GamePlaying:
                 break;
             case State.GameOver:
+                PauseGame();
                 break;
         }
 
@@ -83,20 +85,20 @@ public class GameManager : MonoBehaviour {
         Player.Instance.OnPlayerHit += Player_OnPlayerHit;
     }
 
+    private void PauseGame() {
+        Time.timeScale = 0f;
+    }
+
+    private void ResumeGame() {
+        Time.timeScale = 1f;
+    }
+
     private void WaitingToStartUI_OnStartPressed(object sender, EventArgs e) {
         currentState = State.GamePlaying;
     }
 
     private void Player_OnPlayerHit(object sender, EventArgs e) {
         currentState = State.GameOver;
-    }
-
-    public bool IsRunning() {
-        if (Input.GetKey(KeyCode.W)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public void SetFloor(Transform floor) {
@@ -109,6 +111,14 @@ public class GameManager : MonoBehaviour {
 
     public float GetScore() {
         return currentScore;
+    }
+
+    public bool IsRunning() {
+        if (Input.GetKey(KeyCode.W)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public bool IsWaitingToStart() {
