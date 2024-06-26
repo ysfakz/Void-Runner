@@ -39,4 +39,8 @@ public class GroundSpawner : MonoBehaviour {
             spawnedAmount++;
         }
     }
+
+    public void DespawnGround() {
+        spawnedAmount--;
+    }
 }

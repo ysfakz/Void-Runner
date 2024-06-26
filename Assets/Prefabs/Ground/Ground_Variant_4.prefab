@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1
   runSpeed: 2
+  despawnPoint: {x: 0, y: 0, z: -11}
 --- !u!114 &7713975644869322390
 MonoBehaviour:
   m_ObjectHideFlags: 0
