@@ -17,9 +17,18 @@ public class Player : MonoBehaviour {
     private void Update() {
         if (GameManager.Instance.IsWaitingToStart()) {
             animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
         }
         if (GameManager.Instance.IsGamePlaying()) {
-            animator.SetBool("IsWalking", true);
+            if (!GameManager.Instance.IsRunning()) {
+                animator.SetBool("IsWalking", true);
+                animator.SetBool("IsRunning", false);
+            } else {
+                animator.SetBool("IsWalking", false);
+                animator.SetBool("IsRunning", true);
+            }
+
+            
         }
     }
 
@@ -27,7 +36,6 @@ public class Player : MonoBehaviour {
         Rocket rocket = other.gameObject.GetComponent<Rocket>();
         if (rocket != null) {
             OnPlayerHit?.Invoke(this, EventArgs.Empty);
-            rocket.gameObject.SetActive(false);
         }
     }
 
