@@ -19,25 +19,30 @@ public class GroundSpawner : MonoBehaviour {
     }
 
     private IEnumerator SpawnGround() {
-        while (spawnedAmount < maxprefabs) {
+        while (true) {
             yield return new WaitUntil(GameManager.Instance.IsGamePlaying);
-            yield return new WaitForSeconds(spawnInterval);
-
-            int index = Random.Range(0, groundPrefabs.Count);
-            GameObject prefabToSpawn = groundPrefabs[index];
-
-            Vector3 spawnPos = Vector3.zero;
-            if (lastSpawnedTransform != null) {
-                Transform nextspawnPoint = lastSpawnedTransform.Find("NextSpawnPoint");
-                if (nextspawnPoint != null) {
-                    spawnPos = nextspawnPoint.position;
-                }
+            if (spawnedAmount < maxprefabs) {
+                SpawnGroundPrefab();
             }
-            
-            GameObject spawnedPrefab = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
-            lastSpawnedTransform = spawnedPrefab.transform;
-            spawnedAmount++;
+            yield return new WaitForSeconds(spawnInterval);
         }
+    }
+
+    private void SpawnGroundPrefab() {
+        int index = Random.Range(0, groundPrefabs.Count);
+        GameObject prefabToSpawn = groundPrefabs[index];
+
+        Vector3 spawnPos = Vector3.zero;
+        if (lastSpawnedTransform != null) {
+            Transform nextSpawnPoint = lastSpawnedTransform.Find("NextSpawnPoint");
+            if (nextSpawnPoint != null) {
+                spawnPos = nextSpawnPoint.position;
+            }
+        }
+
+        GameObject spawnedPrefab = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+        lastSpawnedTransform = spawnedPrefab.transform;
+        spawnedAmount++;
     }
 
     public void DespawnGround() {
