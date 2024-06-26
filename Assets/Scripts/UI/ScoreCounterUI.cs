@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class ScoreCounterUI : MonoBehaviour {
 
-    [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Update() {
-        score.text = Mathf.FloorToInt(GameManager.Instance.GetScore()).ToString();
+        string multiplier = GameManager.Instance.GetCurrentMultiplier().ToString();
+        string score = Mathf.FloorToInt(GameManager.Instance.GetScore()).ToString();
+
+        if (GameManager.Instance.IsMultiplierActive()) {
+            scoreText.text = multiplier + "X " + score;
+        } else {
+            scoreText.text = score;
+        }
     }
 
 }

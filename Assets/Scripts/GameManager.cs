@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set;}
     [SerializeField] private float milestoneDistance = 500f;
-    [SerializeField] private float multiplier = 2f;
+    [SerializeField] private float multiplier = 3f;
     [SerializeField] private float multiplierDuration = 10f;
     [SerializeField] private WaitingToStartUI waitingToStartUI;
     private float currentScore;
@@ -127,8 +127,20 @@ public class GameManager : MonoBehaviour {
         return currentScore;
     }
 
+    public float GetCurrentMultiplier() {
+        return currentMultiplier;
+    }
+
     public bool IsRunning() {
         if (Input.GetKey(KeyCode.W)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public bool IsMultiplierActive() {
+        if (currentMultiplier > 1f) {
             return true;
         } else {
             return false;
