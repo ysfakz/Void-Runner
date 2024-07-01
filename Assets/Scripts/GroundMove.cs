@@ -22,7 +22,7 @@ public class GroundMove : MonoBehaviour {
         }
 
         float distance = currentSpeed * Time.deltaTime;
-        GameManager.Instance.IncreaseDistance(distance);
+        GameManager.Instance.IncreaseDistance(distance / 10);
 
         transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
 
