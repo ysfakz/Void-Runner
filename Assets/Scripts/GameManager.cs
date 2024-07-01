@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set;}
-    [SerializeField] private float milestoneDistance = 500f;
+    [SerializeField] private float milestoneDistance = 100f;
     [SerializeField] private float multiplier = 3f;
     [SerializeField] private float multiplierDuration = 10f;
     [SerializeField] private WaitingToStartUI waitingToStartUI;

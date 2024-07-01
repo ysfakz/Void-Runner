@@ -5088,7 +5088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1706c841e9b19a342a77b6dc37aa28cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  milestoneDistance: 500
+  milestoneDistance: 100
   multiplier: 3
   multiplierDuration: 10
   waitingToStartUI: {fileID: 1472225633}
