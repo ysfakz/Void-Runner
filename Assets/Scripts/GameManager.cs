@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     private float multiplierTimer;
     private bool isGamePaused = false;
     private Transform currentFloor;
+    private const string HIGH_SCORE = "HighScore";
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnpaused;
     private enum State {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour {
             case State.GamePlaying:
                 break;
             case State.GameOver:
+                UpdateHighScore();
                 PauseGame();
                 break;
         }
@@ -86,6 +88,12 @@ public class GameManager : MonoBehaviour {
     private void AddListeners() {
         waitingToStartUI.OnStartPressed += WaitingToStartUI_OnStartPressed;
         Player.Instance.OnPlayerHit += Player_OnPlayerHit;
+    }
+
+    private void UpdateHighScore() {
+        if (currentScore > PlayerPrefs.GetFloat(HIGH_SCORE, 0)) {
+            PlayerPrefs.SetFloat(HIGH_SCORE, currentScore);
+        }
     }
 
     public void TogglePauseGame() {

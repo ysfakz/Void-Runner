@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaitingToStartUI : MonoBehaviour {
 
+    [SerializeField] private TextMeshProUGUI highScoreText;
+    private const string HIGH_SCORE = "HighScore";
     public event EventHandler OnStartPressed;
 
     private void Update() {
@@ -12,6 +15,8 @@ public class WaitingToStartUI : MonoBehaviour {
             gameObject.SetActive(false);
             OnStartPressed?.Invoke(this, EventArgs.Empty);
         }
+
+        highScoreText.text = "High Score: " + Mathf.FloorToInt(PlayerPrefs.GetFloat(HIGH_SCORE, 0)).ToString();
     }
 
     private bool IsInput() {
