@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundMove : MonoBehaviour {
 
     [SerializeField] private float walkSpeed = 1f;
-    [SerializeField] private float runSpeed = 2f;
+    [SerializeField] private float runSpeed = 3f;
     [SerializeField] private Vector3 despawnPoint = new Vector3(0, 0, -11);
     private float currentSpeed;
 

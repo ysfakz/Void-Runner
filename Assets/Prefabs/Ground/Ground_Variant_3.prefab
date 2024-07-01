@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1
-  runSpeed: 2
+  runSpeed: 3
   despawnPoint: {x: 0, y: 0, z: -11}
 --- !u!114 &6293374034478553540
 MonoBehaviour:
