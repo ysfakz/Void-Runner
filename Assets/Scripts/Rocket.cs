@@ -32,11 +32,15 @@ public class Rocket : MonoBehaviour {
     }
 
     private void GameManager_OnGamePaused(object sender, EventArgs e) {
-        audioSource.Pause();
+        if (audioSource != null) {
+            audioSource.Pause();
+        }        
     }
 
     private void GameManager_OnGameUnpaused(object sender, EventArgs e) {
-        audioSource.Play();
+        if (audioSource != null) {
+            audioSource.Play();
+        }        
     }
 
 }
