@@ -40,7 +40,7 @@ public class GroundMove : MonoBehaviour {
     }
 
     private void DestroySelf() {
-        GroundSpawner.Instance.DespawnGround();
+        GroundSpawner.Instance.DespawnGround(transform);
         Destroy(gameObject);
     }
 

@@ -9,6 +9,7 @@ public class GroundSpawner : MonoBehaviour {
     [SerializeField] private int maxprefabs = 11;
     private Transform lastSpawnedTransform;
     private int spawnedAmount = 0;
+    private List<Transform> spawnedPrefabs = new List<Transform>();
 
     private void Awake() {
         Instance = this;
@@ -42,10 +43,16 @@ public class GroundSpawner : MonoBehaviour {
 
         GameObject spawnedPrefab = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
         lastSpawnedTransform = spawnedPrefab.transform;
+        spawnedPrefabs.Add(lastSpawnedTransform);
         spawnedAmount++;
     }
 
-    public void DespawnGround() {
+    public void DespawnGround(Transform floor) {
+        spawnedPrefabs.Remove(floor);
         spawnedAmount--;
+    }
+
+    public List<Transform> GetSpawnedPrefabs() {
+        return spawnedPrefabs;
     }
 }
