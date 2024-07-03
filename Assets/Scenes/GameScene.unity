@@ -5090,7 +5090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   milestoneDistance: 100
   multiplier: 3
-  multiplierDuration: 10
+  multiplierDuration: 5
   waitingToStartUI: {fileID: 1472225633}
 --- !u!4 &1732641038
 Transform:

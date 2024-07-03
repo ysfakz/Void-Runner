@@ -5,13 +5,15 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set;}
     [SerializeField] private float milestoneDistance = 100f;
     [SerializeField] private float multiplier = 3f;
-    [SerializeField] private float multiplierDuration = 10f;
+    [SerializeField] private float multiplierDuration = 5f;
     [SerializeField] private WaitingToStartUI waitingToStartUI;
     private float currentScore;
     private float currentDistanceTravelled;
+    private float lastMilestone;
     private float currentMultiplier = 1f;
-    private float multiplierTimer;
+    private float multiplierTimer = 0f;
     private bool isGamePaused = false;
+    private bool isMultiplier = false;
     private Transform currentFloor;
     private const string HIGH_SCORE = "HighScore";
     public event EventHandler OnGamePaused;
@@ -30,7 +32,6 @@ public class GameManager : MonoBehaviour {
 
     private void Update() {
         AddListeners();
-        CheckTimer();
 
         if (Input.GetKeyDown(KeyCode.Escape) && currentState == State.GamePlaying) {
             TogglePauseGame();
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour {
                 ResumeGame();
                 break;
             case State.GamePlaying:
+                CheckTimer();
                 break;
             case State.GameOver:
                 UpdateHighScore();
@@ -50,9 +52,9 @@ public class GameManager : MonoBehaviour {
     }
 
     private void CheckTimer() {
-        if (multiplierTimer > 0f) {
-            multiplierTimer -= Time.deltaTime;
-            if (multiplierTimer <= 0f) {
+        if (isMultiplier) {
+            multiplierTimer += Time.deltaTime;
+            if (multiplierTimer >= multiplierDuration) {
                 EndMultiplier();
             }
         }
@@ -69,19 +71,25 @@ public class GameManager : MonoBehaviour {
     }
 
     private void ActivateMultiplier() {
+        isMultiplier = true;
         currentMultiplier = multiplier;
-        multiplierTimer = multiplierDuration;
+        multiplierTimer = 0f;
     }
 
     private void EndMultiplier() {
+        isMultiplier = false;
+        multiplierTimer = 0f;
         currentMultiplier = 1f;
     }
 
     private void CheckMilestone() {
         float currentMilestone = Mathf.FloorToInt(currentDistanceTravelled / milestoneDistance) * milestoneDistance;
 
-        if (currentMilestone > 0 && currentMilestone % milestoneDistance == 0) {
-            ActivateMultiplier();
+        if (!isMultiplier) {
+            if (currentMilestone > lastMilestone) {
+                lastMilestone = currentMilestone;
+                ActivateMultiplier();
+            }
         }
     }
 
@@ -99,10 +107,10 @@ public class GameManager : MonoBehaviour {
     public void TogglePauseGame() {
         isGamePaused = !isGamePaused;
         if (isGamePaused) {
-            Time.timeScale = 0f;
+            PauseGame();
             OnGamePaused?.Invoke(this, EventArgs.Empty);
         } else {
-            Time.timeScale = 1f;
+            ResumeGame();
             OnGameUnpaused?.Invoke(this, EventArgs.Empty);
         }
     }
