@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
     private float lastMilestone;
     private float currentMultiplier = 1f;
     private float multiplierTimer = 0f;
+    private float inputTimer;
+    private float inputTimerMax = 1f;
     private bool isGamePaused = false;
     private bool isMultiplier = false;
     private Transform currentFloor;
@@ -40,9 +42,13 @@ public class GameManager : MonoBehaviour {
         switch (currentState) {
             case State.WaitingToStart:
                 ResumeGame();
+                inputTimer = 0f;
                 break;
             case State.GamePlaying:
                 CheckTimer();
+                if (inputTimer < inputTimerMax) {
+                    inputTimer += Time.deltaTime;
+                }
                 break;
             case State.GameOver:
                 UpdateHighScore();
@@ -148,8 +154,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public bool IsRunning() {
-        if (Input.GetKey(KeyCode.W)) {
-            return true;
+        if (inputTimer >= inputTimerMax) {
+            if (Input.GetKey(KeyCode.W)) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
