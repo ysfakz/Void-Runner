@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void CheckMilestone() {
-        float currentMilestone = Mathf.FloorToInt(currentDistanceTravelled / milestoneDistance) * milestoneDistance;
+        float currentMilestone = Mathf.FloorToInt(currentScore / milestoneDistance) * milestoneDistance;
 
         if (!isMultiplier) {
             if (currentMilestone > lastMilestone) {
